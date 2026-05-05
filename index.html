@@ -8,7 +8,6 @@
     <title>Diablo II: Resurrected — Todo sobre el juego</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" type="text/js"></script>
     <link rel="icon" href="images/iconod2r.png" type="image/x-icon" />
 </head>
 <!-- Cuerpo de la página -->
@@ -19,7 +18,7 @@
         <div class="container header-inner">
             <a href="#hero" class="logo">Diablo&nbsp;II: Resurrected</a>
             <nav class="main-nav" aria-label="Navegación principal">
-                <a href="#overview">Inicio</a>
+                <a href="#overview">Iniciar sesión</a>
                 <a href="#clases">Clases</a>
                 <a href="#features">Características</a>
                 <a href="#guia">Guía rápida</a>
@@ -66,10 +65,13 @@
             </div>
         </section>
 
-        <!-- Sección overview: descripción general del juego -->
+        <!-- Sección overview: formulario de inicio de sesión y acceso al modal -->
         <section id="overview" class="section container">
-            <h2>¿Qué es Diablo II: Resurrected?</h2>
-            <p class="muted">Es la remasterización del clásico Diablo II y su expansión Lord of Destruction. Mantiene la jugabilidad original mientras actualiza gráficos, sonidos y algunas mejoras en la interfaz.</p>
+            <h2>Iniciar sesión</h2>
+            <p class="muted">Accede para guardar tus builds y preferencias.</p>
+            <div style="margin-top:12px;">
+                <button id="login-open" class="btn btn-primary">Abrir formulario de inicio de sesión</button>
+            </div>
         </section>
 
         <!-- Sección clases: lista de clases jugables con imágenes y descripciones -->
@@ -143,18 +145,105 @@
         </section>
     </main>
 
+    <!-- Modal de login (inicialmente oculto) -->
+    <div id="login-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="login-title">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" aria-label="Cerrar" data-modal-close>&times;</button>
+            <h3 id="login-title">Iniciar sesión</h3>
+            <form id="login-form" class="login-form" novalidate>
+                <label class="field">
+                    <span>Usuario</span>
+                    <input type="text" name="username" id="username" autocomplete="username" required />
+                </label>
+                <label class="field">
+                    <span>Contraseña</span>
+                    <input type="password" name="password" id="password" autocomplete="current-password" required />
+                </label>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <button type="button" class="btn btn-ghost" data-modal-close>Cerrar</button>
+                </div>
+                <div class="modal-footer" style="margin-top:8px">
+                    <button type="button" id="open-register" class="btn btn-ghost">¿No tienes cuenta? Regístrate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <!-- Modal de registro (inicialmente oculto) -->
+        <div id="register-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="register-title">
+            <div class="modal-overlay" data-modal-close></div>
+            <div class="modal-dialog" role="document">
+                <button class="modal-close" aria-label="Cerrar" data-modal-close>&times;</button>
+                <h3 id="register-title">Crear cuenta</h3>
+                <form id="register-form" class="login-form" novalidate>
+                    <label class="field">
+                        <span>Correo electrónico</span>
+                        <input type="email" name="email" id="reg-email" autocomplete="email" required />
+                    </label>
+                    <label class="field">
+                        <span>Contraseña</span>
+                        <input type="password" name="password" id="reg-password" autocomplete="new-password" required />
+                    </label>
+                    <label class="field">
+                        <span>Confirmar contraseña</span>
+                        <input type="password" name="confirm" id="reg-confirm" autocomplete="new-password" required />
+                    </label>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="button" class="btn btn-ghost" data-modal-close>Cerrar</button>
+                    </div>
+                    <p class="error-text" id="reg-error" aria-live="polite" style="display:none;margin-top:8px"></p>
+                </form>
+            </div>
+        </div>
+
     <!-- Pie de página con información de contacto y legales -->
     <footer id="contacto" class="site-footer">
         <div class="container footer-grid">
             <div>
                 <h4>Contacto</h4>
                 <p class="muted">Correo: <a href="mailto:bernardo.torres07@inacapmail.cl">bernardo.torres07@inacapmail.cl</a></p>
+                <p style="margin-top:8px"><button id="open-contact" class="btn btn-ghost">Enviar mensaje</button></p>
             </div>
             <div class="legal muted">© 2026 Sitio informativo no oficial. Diablo II es propiedad de Blizzard Entertainment.</div>
         </div>
     </footer>
 
+    <!-- Modal de contacto -->
+    <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="contact-title">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" aria-label="Cerrar" data-modal-close>&times;</button>
+            <h3 id="contact-title">Contáctanos</h3>
+            <form id="contact-form" class="login-form contact-form" novalidate>
+                <label class="field">
+                    <span>Nombre</span>
+                    <input type="text" name="name" id="contact-name" required />
+                </label>
+                <label class="field">
+                    <span>Teléfono</span>
+                    <input type="tel" name="phone" id="contact-phone" inputmode="tel" />
+                </label>
+                <label class="field">
+                    <span>Correo electrónico</span>
+                    <input type="email" name="email" id="contact-email" required />
+                </label>
+                <label class="field">
+                    <span>Comentario</span>
+                    <textarea name="message" id="contact-message" required></textarea>
+                </label>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="button" class="btn btn-ghost" data-modal-close>Cerrar</button>
+                </div>
+                <p class="error-text" id="contact-error" aria-live="polite" style="display:none;margin-top:8px"></p>
+            </form>
+        </div>
+    </div>
+
     <!-- Scripts de JavaScript al final del body para mejor rendimiento -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

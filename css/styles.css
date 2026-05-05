@@ -104,3 +104,31 @@ a:focus{outline:3px solid rgba(255,255,255,0.06);outline-offset:2px}
 /* Si hay más cards, repetir el patrón cada 6 */
 .grid.cards .card:nth-child(6n+1){background:linear-gradient(135deg,#ffb3b3 0%,#ffdede 100%);color:#2b1b1b}
 
+/* Estilos para modal de login */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:1200;pointer-events:none;transition:opacity 180ms ease,visibility 180ms ease}
+.modal[aria-hidden="true"]{opacity:0;visibility:hidden}
+.modal[aria-hidden="false"]{opacity:1;visibility:visible;pointer-events:auto}
+.modal-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.6);backdrop-filter:blur(3px)}
+.modal-dialog{position:relative;background:var(--card);color:var(--text);padding:22px;border-radius:12px;width:100%;max-width:420px;box-shadow:0 30px 60px rgba(2,6,23,0.6);z-index:2}
+.modal-close{position:absolute;right:12px;top:8px;background:transparent;border:0;color:var(--muted);font-size:24px;line-height:1;cursor:pointer}
+.login-form{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.login-form .field{display:flex;flex-direction:column;gap:6px}
+.login-form .field span{font-weight:700;color:var(--muted);font-size:13px}
+.login-form input{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text)}
+.login-form input:focus{outline:2px solid rgba(29,78,216,0.18);outline-offset:2px}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+
+@media(max-width:520px){
+  .modal-dialog{margin:0 16px;width:auto}
+}
+
+/* Footer del modal y mensajes de error */
+.modal-footer{display:flex;justify-content:center}
+.modal-footer .btn{padding:8px 12px}
+.error-text{color:var(--accent);font-size:0.95rem}
+.input-invalid{border-color:var(--accent)!important}
+
+/* Estilos para textarea del contacto */
+.contact-form textarea{width:100%;min-height:120px;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text);resize:vertical}
+.contact-form input[type="tel"]{max-width:260px}
+
