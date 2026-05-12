@@ -200,4 +200,35 @@ document.addEventListener('DOMContentLoaded', ()=> {
     });
   }
 
+  // --- Carrusel de imágenes ---
+  const carouselImages = [
+    'images/carrusel/carrusel2.jpg',
+    'images/carrusel/baner.jpg',
+    'images/carrusel/carrusel1.jpg'
+  ];
+  let carouselIndex = 0;
+  const carouselImageEl = document.getElementById('carousel-image');
+  const carouselCaption = document.getElementById('carousel-caption');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+
+  function updateCarousel(){
+    if(!carouselImageEl) return;
+    carouselImageEl.src = carouselImages[carouselIndex];
+    carouselImageEl.alt = `Carrusel imagen ${carouselIndex+1}`;
+    if(carouselCaption) carouselCaption.textContent = `${carouselIndex+1} / ${carouselImages.length}`;
+  }
+
+  if(prevBtn) prevBtn.addEventListener('click', e => { e.preventDefault(); carouselIndex = (carouselIndex - 1 + carouselImages.length) % carouselImages.length; updateCarousel(); });
+  if(nextBtn) nextBtn.addEventListener('click', e => { e.preventDefault(); carouselIndex = (carouselIndex + 1) % carouselImages.length; updateCarousel(); });
+
+  // Soporte de teclado: flechas izquierda/derecha
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowLeft'){ carouselIndex = (carouselIndex - 1 + carouselImages.length) % carouselImages.length; updateCarousel(); }
+    if(e.key === 'ArrowRight'){ carouselIndex = (carouselIndex + 1) % carouselImages.length; updateCarousel(); }
+  });
+
+  // Inicializar estado del carrusel
+  updateCarousel();
+
 });

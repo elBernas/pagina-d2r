@@ -27,6 +27,38 @@
         </div>
     </header>
 
+    <!-- Modal de contacto (moved arriba) -->
+    <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="contact-title">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" aria-label="Cerrar" data-modal-close>&times;</button>
+            <h3 id="contact-title">Contáctanos</h3>
+            <form id="contact-form" class="login-form contact-form" novalidate>
+                <label class="field">
+                    <span>Nombre</span>
+                    <input type="text" name="name" id="contact-name" required />
+                </label>
+                <label class="field">
+                    <span>Teléfono</span>
+                    <input type="tel" name="phone" id="contact-phone" inputmode="tel" />
+                </label>
+                <label class="field">
+                    <span>Correo electrónico</span>
+                    <input type="email" name="email" id="contact-email" required />
+                </label>
+                <label class="field">
+                    <span>Comentario</span>
+                    <textarea name="message" id="contact-message" required></textarea>
+                </label>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="button" class="btn btn-ghost" data-modal-close>Cerrar</button>
+                </div>
+                <p class="error-text" id="contact-error" aria-live="polite" style="display:none;margin-top:8px"></p>
+            </form>
+        </div>
+    </div>
+
     <!-- Contenido principal de la página -->
     <main>
         <!-- Sección hero: banner y introducción -->
@@ -62,6 +94,19 @@
                         </ul>
                     </div>
                 </aside>
+            </div>
+        </section>
+
+        <!-- Sección Carrusel: galería de 3 imágenes con navegación -->
+        <section id="carrusel" class="section container" aria-labelledby="carrusel-title">
+            <h2 id="carrusel-title">Galería</h2>
+            <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Carrusel de imágenes">
+                <button class="carousel-btn prev" id="carousel-prev" aria-label="Anterior">Anterior</button>
+                <figure class="carousel-track">
+                    <img id="carousel-image" src="images/carrusel/carrusel2.jpg" alt="Carrusel imagen 1" />
+                    <figcaption id="carousel-caption">1 / 3</figcaption>
+                </figure>
+                <button class="carousel-btn next" id="carousel-next" aria-label="Siguiente">Siguiente</button>
             </div>
         </section>
 
@@ -211,37 +256,7 @@
         </div>
     </footer>
 
-    <!-- Modal de contacto -->
-    <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="contact-title">
-        <div class="modal-overlay" data-modal-close></div>
-        <div class="modal-dialog" role="document">
-            <button class="modal-close" aria-label="Cerrar" data-modal-close>&times;</button>
-            <h3 id="contact-title">Contáctanos</h3>
-            <form id="contact-form" class="login-form contact-form" novalidate>
-                <label class="field">
-                    <span>Nombre</span>
-                    <input type="text" name="name" id="contact-name" required />
-                </label>
-                <label class="field">
-                    <span>Teléfono</span>
-                    <input type="tel" name="phone" id="contact-phone" inputmode="tel" />
-                </label>
-                <label class="field">
-                    <span>Correo electrónico</span>
-                    <input type="email" name="email" id="contact-email" required />
-                </label>
-                <label class="field">
-                    <span>Comentario</span>
-                    <textarea name="message" id="contact-message" required></textarea>
-                </label>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                    <button type="button" class="btn btn-ghost" data-modal-close>Cerrar</button>
-                </div>
-                <p class="error-text" id="contact-error" aria-live="polite" style="display:none;margin-top:8px"></p>
-            </form>
-        </div>
-    </div>
+    
 
     <!-- Scripts de JavaScript al final del body para mejor rendimiento -->
     <script src="js/script.js"></script>
